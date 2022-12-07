@@ -1,24 +1,22 @@
-﻿namespace AdventOfCode2022Library.Day1
-{
-    public class Elf : IComparable<Elf>
-    {
-        public int id;
-        public List<Food> foodList;
-        public Elf(int id)
-        {
-            this.id = id;
-            foodList = new List<Food>();
-        }
+﻿using System.Diagnostics.CodeAnalysis;
 
-        public Elf(int id, params Food[] foods)
+namespace AdventOfCode2022Library
+{
+    public class Elf : IComparable<Elf>, IMyParsable<Elf>
+    {
+        public static int freeId = 1;
+        public int id;
+        public List<int> Calories;
+        public Elf()
         {
-            this.id = id;
-            foodList = foods.ToList();
+            id = freeId;
+            Calories = new List<int>();
+            freeId++;
         }
 
         public int SumCalories()
         {
-            return foodList.Sum(x => x.Calories);
+            return Calories.Sum();
         }
 
         public int CompareTo(Elf? other)
@@ -30,5 +28,12 @@
             return SumCalories() - other.SumCalories();
         }
 
+        public static Elf Parse(string s)
+        {
+            return new Elf()
+            {
+                Calories = s.Split(';').Select(x => int.Parse(x)).ToList(),
+            };
+        }
     }
 }

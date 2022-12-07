@@ -1,5 +1,5 @@
 ﻿using System.Security.Cryptography.X509Certificates;
-using AdventOfCode2022Library.Day2;
+using AdventOfCode2022Library;
 
 namespace AdventOfCode2022Test
 {
@@ -10,7 +10,7 @@ namespace AdventOfCode2022Test
         public void CountPoints()
         {
             using Parser parser = new("TestInputs\\Day2.txt");
-            ICollection<Game> games = parser.ReadGames();
+            ICollection<Game> games = parser.ReadContent<Game>();
 
             Assert.IsTrue(games.Sum(x => x.CountPoints) == 15);
         }
@@ -19,9 +19,33 @@ namespace AdventOfCode2022Test
         public void CountPointsWithKnownOutcome()
         {
             using Parser parser = new("TestInputs\\Day2.txt");
-            ICollection<Game> games = parser.ReadGames(outcome: true);
-
+            ICollection<Game> games = parser.ReadContent<Game>();
+            foreach (Game game in games)
+            {
+                game.SwitchPlayers();
+            }
             Assert.IsTrue(games.Sum(x => x.CountPoints) == 12);
+        }
+
+        [TestMethod]
+        public void CountPointsRealData()
+        {
+            using Parser parser = new("Inputs\\Day2.txt");
+            ICollection<Game> games = parser.ReadContent<Game>();
+
+            Assert.IsTrue(games.Sum(x => x.CountPoints) == 11063);
+        }
+
+        [TestMethod]
+        public void CountPointsWithKnownOutcomeRealData()
+        {
+            using Parser parser = new("Inputs\\Day2.txt");
+            ICollection<Game> games = parser.ReadContent<Game>();
+            foreach (Game game in games)
+            {
+                game.SwitchPlayers();
+            }
+            Assert.IsTrue(games.Sum(x => x.CountPoints) == 10349);
         }
     }
 }
