@@ -1,9 +1,4 @@
 ﻿using AdventOfCode2022Library;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventOfCode2022Test
 {
@@ -16,7 +11,7 @@ namespace AdventOfCode2022Test
             using Parser parser = new("TestInputs\\Day4.txt");
             List<CleaningPair> cleaningPair = parser.ReadContent<CleaningPair>().ToList();
 
-            Assert.IsTrue(cleaningPair.Count(x => x.DoesOneContainAnother) == 2);
+            Assert.AreEqual(2, cleaningPair.Count(x => x.DoesOneContainAnother));
         }
 
         [TestMethod]
@@ -25,7 +20,7 @@ namespace AdventOfCode2022Test
             using Parser parser = new("TestInputs\\Day4.txt");
             List<CleaningPair> cleaningPair = parser.ReadContent<CleaningPair>().ToList();
 
-            Assert.IsTrue(cleaningPair.Count(x => x.Overlap) == 4);
+            Assert.AreEqual(4, cleaningPair.Count(x => x.Overlap));
         }
 
         [TestMethod]
@@ -34,7 +29,7 @@ namespace AdventOfCode2022Test
             using Parser parser = new("Inputs\\Day4.txt");
             List<CleaningPair> cleaningPair = parser.ReadContent<CleaningPair>().ToList();
 
-            Assert.IsTrue(cleaningPair.Count(x => x.DoesOneContainAnother) == 496);
+            Assert.AreEqual(496, cleaningPair.Count(x => x.DoesOneContainAnother));
         }
 
         [TestMethod]
@@ -43,7 +38,7 @@ namespace AdventOfCode2022Test
             using Parser parser = new("Inputs\\Day4.txt");
             List<CleaningPair> cleaningPair = parser.ReadContent<CleaningPair>().ToList();
 
-            Assert.IsTrue(cleaningPair.Count(x => x.Overlap) == 847);
+            Assert.AreEqual(847, cleaningPair.Count(x => x.Overlap));
         }
     }
 }

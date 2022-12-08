@@ -1,12 +1,4 @@
-﻿using AdventOfCode2022Library;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventOfCode2022Library
+﻿namespace AdventOfCode2022Library
 {
     public class Parser : IDisposable
     {
@@ -14,7 +6,7 @@ namespace AdventOfCode2022Library
         readonly FileStream fileStream;
         public Parser(string filePath)
         {
-            this.filePath = filePath;
+            this.filePath = filePath.Replace('\\', Path.DirectorySeparatorChar);
             fileStream = new FileStream(filePath, FileMode.Open);
         }
 

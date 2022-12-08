@@ -1,11 +1,4 @@
-﻿using AdventOfCode2022Library;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventOfCode2022Library
+﻿namespace AdventOfCode2022Library
 {
     public static class TaskRunner
     {
@@ -30,6 +23,15 @@ namespace AdventOfCode2022Library
                 case "Day5":
                     RunDay5(parser);
                     break;
+                case "Day6":
+                    RunDay6(parser);
+                    break;
+                case "Day7":
+                    RunDay7(parser);
+                    break;
+                case "Day8":
+                    RunDay8(parser);
+                    break;
                 default:
                     break;
             }
@@ -38,7 +40,7 @@ namespace AdventOfCode2022Library
         public static void RunDay1(Parser parser)
         {
             ICollection<Elf> elves = parser.ReadMultilineContent<Elf>();
-            if(elves == null || elves.Count == 0) { return; }
+            if (elves == null || elves.Count == 0) { return; }
             Console.WriteLine("  Max calories: " + elves.ToList().Max()?.SumCalories());
 
             int iter = 3;
@@ -97,6 +99,31 @@ namespace AdventOfCode2022Library
             stacks.Repopulate();
             stacks.ApplyInstructions(CrateMover9001: true);
             Console.WriteLine("  Top containers on stacks with CrateMover9001: " + stacks.GetResult);
+        }
+
+        public static void RunDay6(Parser parser)
+        {
+            Signal signal = parser.ReadContent<Signal>().First();
+            Console.WriteLine("  Transmission start: " + signal.FindStartSignal);
+            Console.WriteLine("  Message start: " + signal.FindStartMessage);
+        }
+
+        public static void RunDay7(Parser parser)
+        {
+            Dirs directory = parser.ReadMultilineContent<Dirs>().First();
+            int size = directory.CountSizeOfSmallDirs(100000);
+
+            Console.WriteLine("  Sum of sizes of directories with sizes less than a 100000: " + size);
+            Console.WriteLine("  Size of the smallest directory to delete: " + directory.FindSmallestSizeToDelete(directory.size - 40000000));
+        }
+
+        public static void RunDay8(Parser parser)
+        {
+            TreeGrid treeGrid = parser.ReadMultilineContent<TreeGrid>().First();
+            treeGrid.CheckVisibilty();
+
+            Console.WriteLine("  Visible trees in grid: " + treeGrid.CountVisible());
+            Console.WriteLine("  Visible trees from treehouse: " + treeGrid.BiggestScore());
         }
     }
 }

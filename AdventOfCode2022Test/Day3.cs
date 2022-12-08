@@ -11,7 +11,7 @@ namespace AdventOfCode2022Test
             using Parser parser = new("TestInputs\\Day3.txt");
             ICollection<Rucksack> rucksacks = parser.ReadContent<Rucksack>();
 
-            Assert.IsTrue(rucksacks.Sum(x => x.GetWrongItem) == 157);
+            Assert.AreEqual(157, rucksacks.Sum(x => x.GetWrongItem));
         }
 
         [TestMethod]
@@ -26,7 +26,7 @@ namespace AdventOfCode2022Test
                 count += Rucksack.Compare(rucksacks[i], rucksacks[i + 1], rucksacks[i + 2]);
             }
 
-            Assert.IsTrue(count == 70);
+            Assert.AreEqual(70, count);
         }
 
         [TestMethod]
@@ -35,7 +35,7 @@ namespace AdventOfCode2022Test
             using Parser parser = new("Inputs\\Day3.txt");
             ICollection<Rucksack> rucksacks = parser.ReadContent<Rucksack>();
 
-            Assert.IsTrue(rucksacks.Sum(x => x.GetWrongItem) == 7903);
+            Assert.AreEqual(7903, rucksacks.Sum(x => x.GetWrongItem));
         }
 
         [TestMethod]
@@ -50,7 +50,7 @@ namespace AdventOfCode2022Test
                 count += Rucksack.Compare(rucksacks[i], rucksacks[i + 1], rucksacks[i + 2]);
             }
 
-            Assert.IsTrue(count == 2548);
+            Assert.AreEqual(2548, count);
         }
     }
 }

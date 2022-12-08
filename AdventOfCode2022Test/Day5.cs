@@ -1,9 +1,4 @@
 ﻿using AdventOfCode2022Library;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventOfCode2022Test
 {
@@ -20,7 +15,7 @@ namespace AdventOfCode2022Test
 
             stacks.ApplyInstructions();
 
-            Assert.IsTrue(stacks.GetResult == "CMZ");
+            Assert.AreEqual("CMZ", stacks.GetResult);
         }
 
         [TestMethod]
@@ -33,7 +28,7 @@ namespace AdventOfCode2022Test
 
             stacks.ApplyInstructions(CrateMover9001: true);
 
-            Assert.IsTrue(stacks.GetResult == "MCD");
+            Assert.AreEqual("MCD", stacks.GetResult);
         }
 
         [TestMethod]
@@ -46,7 +41,7 @@ namespace AdventOfCode2022Test
 
             stacks.ApplyInstructions();
 
-            Assert.IsTrue(stacks.GetResult == "WCZTHTMPS");
+            Assert.AreEqual("WCZTHTMPS", stacks.GetResult);
         }
 
         [TestMethod]
@@ -59,7 +54,7 @@ namespace AdventOfCode2022Test
 
             stacks.ApplyInstructions(CrateMover9001: true);
 
-            Assert.IsTrue(stacks.GetResult == "BLSGJSDTS");
+            Assert.AreEqual("BLSGJSDTS", stacks.GetResult);
         }
     }
 }

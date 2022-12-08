@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace AdventOfCode2022Library
+﻿namespace AdventOfCode2022Library
 {
     public class Elf : IComparable<Elf>, IMyParsable<Elf>
     {
