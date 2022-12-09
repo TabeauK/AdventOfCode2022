@@ -42,7 +42,7 @@ namespace AdventOfCode2022Test
             SnakeGrid grid = new(parser.ReadContent<SnakeMove>().ToList());
             grid.ApplyMoves();
 
-            Assert.AreEqual(0, grid.GetTailPositions(9).Distinct().Count());
+            Assert.AreEqual(2471, grid.GetTailPositions(9).Distinct().Count());
         }
     }
 }

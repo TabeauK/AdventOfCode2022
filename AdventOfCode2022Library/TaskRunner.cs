@@ -132,8 +132,10 @@
         public static void RunDay9(Parser parser)
         {
             SnakeGrid grid = new(parser.ReadContent<SnakeMove>().ToList());
+            grid.ApplyMoves();
 
             Console.WriteLine("  Number of tail positions: " + grid.GetTailPositions(1).Distinct().Count());
+            Console.WriteLine("  Number of long tail positions: " + grid.GetTailPositions(9).Distinct().Count());
         }
     }
 }
