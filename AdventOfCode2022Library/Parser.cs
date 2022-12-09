@@ -7,7 +7,7 @@
         public Parser(string filePath)
         {
             this.filePath = filePath.Replace('\\', Path.DirectorySeparatorChar);
-            fileStream = new FileStream(filePath, FileMode.Open);
+            fileStream = new FileStream(this.filePath, FileMode.Open);
         }
 
         public ICollection<T> ReadContent<T>() where T : IMyParsable<T>

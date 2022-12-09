@@ -12,6 +12,7 @@ namespace AdventOfCode2022Test
             ICollection<Elf> elves = parser.ReadMultilineContent<Elf>();
 
             Assert.AreEqual(4, elves.ToList().Max()?.id);
+            Assert.AreEqual(24000 , elves.ToList().Max()?.SumCalories());
         }
 
         [TestMethod]
@@ -38,8 +39,7 @@ namespace AdventOfCode2022Test
             using Parser parser = new("Inputs\\Day1.txt");
             ICollection<Elf> elves = parser.ReadMultilineContent<Elf>();
 
-            Assert.IsTrue(elves.ToList().Max()?.id == 236 ||
-                elves.ToList().Max()?.id == 497);
+            Assert.AreEqual(72240, elves.ToList().Max()?.SumCalories());
         }
 
         [TestMethod]

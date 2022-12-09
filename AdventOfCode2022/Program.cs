@@ -8,3 +8,4 @@ TaskRunner.RunDay("Day5");
 TaskRunner.RunDay("Day6");
 TaskRunner.RunDay("Day7");
 TaskRunner.RunDay("Day8");
+TaskRunner.RunDay("Day9");

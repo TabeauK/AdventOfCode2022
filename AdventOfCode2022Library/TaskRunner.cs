@@ -32,6 +32,9 @@
                 case "Day8":
                     RunDay8(parser);
                     break;
+                case "Day9":
+                    RunDay9(parser);
+                    break;
                 default:
                     break;
             }
@@ -124,6 +127,13 @@
 
             Console.WriteLine("  Visible trees in grid: " + treeGrid.CountVisible());
             Console.WriteLine("  Visible trees from treehouse: " + treeGrid.BiggestScore());
+        }
+
+        public static void RunDay9(Parser parser)
+        {
+            SnakeGrid grid = new(parser.ReadContent<SnakeMove>().ToList());
+
+            Console.WriteLine("  Number of tail positions: " + grid.GetTailPositions(1).Distinct().Count());
         }
     }
 }

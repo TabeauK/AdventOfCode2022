@@ -16,7 +16,7 @@ namespace AdventOfCode2022Test
         }
 
         [TestMethod]
-        public void ContVisibleTrees()
+        public void CountVisibleTrees()
         {
             using Parser parser = new("TestInputs\\Day8.txt");
             TreeGrid treeGrid = parser.ReadMultilineContent<TreeGrid>().First();
@@ -36,7 +36,7 @@ namespace AdventOfCode2022Test
         }
 
         [TestMethod]
-        public void ContVisibleTreesRealData()
+        public void CountVisibleTreesRealData()
         {
             using Parser parser = new("Inputs\\Day8.txt");
             TreeGrid treeGrid = parser.ReadMultilineContent<TreeGrid>().First();
