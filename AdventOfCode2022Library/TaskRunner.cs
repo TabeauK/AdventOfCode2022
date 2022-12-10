@@ -35,6 +35,9 @@
                 case "Day9":
                     RunDay9(parser);
                     break;
+                case "Day10":
+                    RunDay10(parser);
+                    break;
                 default:
                     break;
             }
@@ -136,6 +139,24 @@
 
             Console.WriteLine("  Number of tail positions: " + grid.GetTailPositions(1).Distinct().Count());
             Console.WriteLine("  Number of long tail positions: " + grid.GetTailPositions(9).Distinct().Count());
+        }
+
+        public static void RunDay10(Parser parser)
+        {
+            Processor proc = new()
+            {
+                commands = parser.ReadContent<Command>().ToList()
+            };
+            proc.ExecuteCommands();
+
+
+            Console.WriteLine("  Number of tail positions: " + proc.GetRegisterStrengthInKeyMoments(new() { 20, 60, 100, 140, 180, 220 }));
+            List<string> pattern = proc.GetPattern();
+            Console.WriteLine("  Pattern:");
+            foreach (string pat in pattern)
+            {
+                Console.WriteLine("    " + pat);
+            }
         }
     }
 }

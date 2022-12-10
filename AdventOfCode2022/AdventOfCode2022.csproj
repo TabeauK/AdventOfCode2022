@@ -8,6 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Inputs\Day10.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Inputs\Day10.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AdventOfCode2022Library\AdventOfCode2022Library.csproj" />
   </ItemGroup>
 
