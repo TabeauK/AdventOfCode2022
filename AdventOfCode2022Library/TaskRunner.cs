@@ -38,6 +38,9 @@
                 case "Day10":
                     RunDay10(parser);
                     break;
+                case "Day11":
+                    RunDay11(parser);
+                    break;
                 default:
                     break;
             }
@@ -157,6 +160,26 @@
             {
                 Console.WriteLine("    " + pat);
             }
+        }
+
+        public static void RunDay11(Parser parser)
+        {
+            Monkey.Clear();
+            List<Monkey> monkeys = parser.ReadMultilineContent<Monkey>().ToList();
+
+            Monkey.PlayRounds(20);
+            monkeys.Sort((x, y) => x.ItemsInspected - y.ItemsInspected);
+
+            Console.WriteLine("  Level of monkey business (20 rounds): " + monkeys[^1].ItemsInspected * (long)monkeys[^2].ItemsInspected);
+
+            parser = new($"Inputs\\Day11.txt");
+            Monkey.Clear();
+            monkeys = parser.ReadMultilineContent<Monkey>().ToList();
+
+            Monkey.PlayRounds(10000, relief: false);
+            monkeys.Sort((x, y) => x.ItemsInspected - y.ItemsInspected);
+
+            Console.WriteLine("  Level of monkey business (10000 rounds) with no relief: " + (monkeys[^1].ItemsInspected * (long)monkeys[^2].ItemsInspected).ToString());
         }
     }
 }
