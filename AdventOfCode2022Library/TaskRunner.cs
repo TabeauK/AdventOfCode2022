@@ -41,6 +41,9 @@
                 case "Day11":
                     RunDay11(parser);
                     break;
+                case "Day12":
+                    RunDay12(parser);
+                    break;
                 default:
                     break;
             }
@@ -57,8 +60,8 @@
 
             while (iter > 0)
             {
-                count += elves.Max().SumCalories();
-                elves.Remove(elves.Max());
+                count += elves.Max()!.SumCalories();
+                elves.Remove(elves.Max()!);
                 iter--;
             }
 
@@ -180,6 +183,16 @@
             monkeys.Sort((x, y) => x.ItemsInspected - y.ItemsInspected);
 
             Console.WriteLine("  Level of monkey business (10000 rounds) with no relief: " + (monkeys[^1].ItemsInspected * (long)monkeys[^2].ItemsInspected).ToString());
+        }
+
+        public static void RunDay12(Parser parser)
+        {
+            TopographicMap map = parser.ReadMultilineContent<TopographicMap>().First();
+
+            List<((int, int), char)> path = map.AStar();
+
+            Console.WriteLine("  Shortest path from 'S' to 'E': " + (path.Count - 1));
+            Console.WriteLine("  Shortest path from any 'a' to 'E': " + (map.GetShortestPathFromA - 1));
         }
     }
 }

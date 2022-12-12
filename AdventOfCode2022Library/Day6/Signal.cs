@@ -8,7 +8,7 @@ namespace AdventOfCode2022Library
 {
     public class Signal : IMyParsable<Signal>
     {
-        private string signal;
+        private string signal = "";
         public static Signal Parse(string s)
         {
             return new Signal()

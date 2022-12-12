@@ -25,8 +25,8 @@ namespace AdventOfCode2022Test
 
             while (iter > 0)
             {
-                count += elves.Max().SumCalories();
-                elves.Remove(elves.Max());
+                count += elves.Max()!.SumCalories();
+                elves.Remove(elves.Max()!);
                 iter--;
             }
 
@@ -52,8 +52,8 @@ namespace AdventOfCode2022Test
 
             while (iter > 0)
             {
-                count += elves.Max().SumCalories();
-                elves.Remove(elves.Max());
+                count += elves.Max()!.SumCalories();
+                elves.Remove(elves.Max()!);
                 iter--;
             }
 
