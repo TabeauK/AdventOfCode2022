@@ -5,9 +5,9 @@
         Tree[,] trees = new Tree[0, 0]; 
         public static TreeGrid Parse(string s)
         {
-            Tree[,] trees = new Tree[s.Split(';').Length, s.Split(';')[0].Length];
+            Tree[,] trees = new Tree[s.Split('\n').Length, s.Split('\n')[0].Length];
             int i = 0;
-            foreach(string row in s.Split(";"))
+            foreach(string row in s.Split('\n'))
             {
                 for (int j = 0; j < row.Length; j++)
                 {

@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode2022Library
+﻿using System.IO;
+
+namespace AdventOfCode2022Library
 {
     public static class TaskRunner
     {
@@ -43,6 +45,9 @@
                     break;
                 case "Day12":
                     RunDay12(parser);
+                    break;
+                case "Day13":
+                    RunDay13(parser);
                     break;
                 default:
                     break;
@@ -193,6 +198,26 @@
 
             Console.WriteLine("  Shortest path from 'S' to 'E': " + (path.Count - 1));
             Console.WriteLine("  Shortest path from any 'a' to 'E': " + (map.GetShortestPathFromA - 1));
+        }
+
+        public static void RunDay13(Parser parser)
+        {
+            List<DistressSignal> signals = parser.ReadMultilineContent<DistressSignal>().ToList();
+            List<int> verify = signals.Select(x => x.Verify).ToList();
+
+            int sum = 0;
+            for (int i = 0; i < verify.Count; i++)
+            {
+                sum += (i + 1) * verify[i];
+            }
+
+            List<dynamic> list = DistressSignal.ListOfAllSignals(signals);
+            list.Sort(DistressSignal.Compare);
+
+            Console.WriteLine("  Verification of right signal order: " + sum);
+            Console.WriteLine("  Decoder key for the distress signal: " + 
+                ((list.FindIndex(x => x is string && x == "[[2]]") + 1) *
+                (list.FindIndex(x => x is string && x == "[[6]]") + 1)));
         }
     }
 }

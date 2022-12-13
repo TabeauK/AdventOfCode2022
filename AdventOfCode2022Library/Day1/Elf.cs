@@ -30,7 +30,7 @@
         {
             return new Elf()
             {
-                Calories = s.Split(';').Select(x => int.Parse(x)).ToList(),
+                Calories = s.Split('\n').Select(x => int.Parse(x)).ToList(),
             };
         }
     }

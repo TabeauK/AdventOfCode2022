@@ -52,7 +52,7 @@ namespace AdventOfCode2022Library
 
         public static Dirs Parse(string s)
         {
-            string[] lines = s.Split(';');
+            string[] lines = s.Split('\n');
             int i = 1;
             Dirs directory = new Dirs()
             {

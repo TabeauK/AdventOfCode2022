@@ -37,7 +37,7 @@
                 {
                     if(string.IsNullOrEmpty(line))
                     {
-                        list.Add(T.Parse(string.Join(';', lines)));
+                        list.Add(T.Parse(string.Join('\n', lines)));
                         lines.Clear();
                     }
                     else
@@ -47,7 +47,7 @@
                 }
                 if (string.IsNullOrEmpty(line))
                 {
-                    list.Add(T.Parse(string.Join(';', lines)));
+                    list.Add(T.Parse(string.Join('\n', lines)));
                     lines.Clear();
                 }
             }

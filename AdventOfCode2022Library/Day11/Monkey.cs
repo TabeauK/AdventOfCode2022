@@ -34,7 +34,7 @@ namespace AdventOfCode2022Library
         }
         public static Monkey Parse(string s)
         {
-            string[] lines = s.Split(';');
+            string[] lines = s.Split('\n');
             Monkey monkey = new()
             {
                 Id = int.Parse(

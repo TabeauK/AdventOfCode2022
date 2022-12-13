@@ -10,7 +10,7 @@
         public static Stacks Parse(string s)
         {
             Stacks stacks = new();
-            string[] rows = s.Split(';');
+            string[] rows = s.Split('\n');
             stacks.original.AddRange(from string number in rows[^1].Split(' ').Where(x => !string.IsNullOrEmpty(x))
                                      select new Stack<char>());
             for(int i = rows.Length - 2; i >= 0; i--)

@@ -15,7 +15,7 @@
         public static TopographicMap Parse(string s)
         {
             TopographicMap map = new();
-            string[] lines = s.Split(';');
+            string[] lines = s.Split('\n');
             for(int i = 0; i < lines.Length; i++)
             {
                 for(int j = 0; j < lines[0].Length; j++)
