@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace AdventOfCode2022Library
 {
@@ -48,6 +49,9 @@ namespace AdventOfCode2022Library
                     break;
                 case "Day13":
                     RunDay13(parser);
+                    break;
+                case "Day14":
+                    RunDay14(parser);
                     break;
                 default:
                     break;
@@ -211,13 +215,28 @@ namespace AdventOfCode2022Library
                 sum += (i + 1) * verify[i];
             }
 
-            List<dynamic> list = DistressSignal.ListOfAllSignals(signals);
+            List<DistressSignal.SignalType> list = DistressSignal.ListOfAllSignals(signals);
             list.Sort(DistressSignal.Compare);
 
             Console.WriteLine("  Verification of right signal order: " + sum);
             Console.WriteLine("  Decoder key for the distress signal: " + 
-                ((list.FindIndex(x => x is string && x == "[[2]]") + 1) *
-                (list.FindIndex(x => x is string && x == "[[6]]") + 1)));
+                (list.FindIndex(x => x.List?.FirstOrDefault()?.List?.FirstOrDefault()?.Value == 2) + 1) *
+                (list.FindIndex(x => x.List?.FirstOrDefault()?.List?.FirstOrDefault()?.Value == 6) + 1));
+        }
+
+        public static void RunDay14(Parser parser)
+        {
+            RockFormation formation = RockFormation.Combine(parser.ReadContent<RockFormation>());
+
+            formation.FillWithSand();
+
+            Console.WriteLine("  Sand in bottomless formation: " + formation.SandPlace.Count);
+
+            formation.SandPlace.Clear();
+            formation.AddFloor();
+            formation.FillWithSand();
+
+            Console.WriteLine("  Sand in formation with the floor: " + formation.SandPlace.Count);
         }
     }
 }

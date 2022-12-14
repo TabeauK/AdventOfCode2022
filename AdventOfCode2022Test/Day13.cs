@@ -26,12 +26,12 @@ namespace AdventOfCode2022Test
             using Parser parser = new("TestInputs\\Day13.txt");
             List<DistressSignal> signals = parser.ReadMultilineContent<DistressSignal>().ToList();
 
-            List<dynamic> list = DistressSignal.ListOfAllSignals(signals);
+            List<DistressSignal.SignalType> list = DistressSignal.ListOfAllSignals(signals);
             list.Sort(DistressSignal.Compare);
 
-            Assert.AreEqual(140, 
-                (list.FindIndex(x => x is string && x == "[[2]]") + 1) *
-                (list.FindIndex(x => x is string && x == "[[6]]") + 1));
+            Assert.AreEqual(140,
+                (list.FindIndex(x => x.List?.FirstOrDefault()?.List?.FirstOrDefault()?.Value == 2) + 1) *
+                (list.FindIndex(x => x.List?.FirstOrDefault()?.List?.FirstOrDefault()?.Value == 6) + 1));
         }
 
         [TestMethod]
@@ -56,12 +56,12 @@ namespace AdventOfCode2022Test
             using Parser parser = new("Inputs\\Day13.txt");
             List<DistressSignal> signals = parser.ReadMultilineContent<DistressSignal>().ToList();
 
-            List<dynamic> list = DistressSignal.ListOfAllSignals(signals);
+            List<DistressSignal.SignalType> list = DistressSignal.ListOfAllSignals(signals);
             list.Sort(DistressSignal.Compare);
 
             Assert.AreEqual(20280,
-                (list.FindIndex(x => x is string && x == "[[2]]") + 1) *
-                (list.FindIndex(x => x is string && x == "[[6]]") + 1));
+                (list.FindIndex(x => x.List?.FirstOrDefault()?.List?.FirstOrDefault()?.Value == 2) + 1) *
+                (list.FindIndex(x => x.List?.FirstOrDefault()?.List?.FirstOrDefault()?.Value == 6) + 1));
         }
     }
 }
