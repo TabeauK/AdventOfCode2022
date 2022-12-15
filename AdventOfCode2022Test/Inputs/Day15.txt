@@ -1,0 +1,11 @@
+using System;
+namespace AdventOfCode2022Test
+{
+    public class Day15
+    {
+        public Day15()
+        {
+        }
+    }
+}
+
