@@ -3,47 +3,42 @@
 namespace AdventOfCode2022Test
 {
     [TestClass]
-    public class Day15
+    public class Day16
     {
         [TestMethod]
-        public void LineCoverage()
+        public void FindMaxPressure()
         {
-            using Parser parser = new("TestInputs\\Day15.txt");
-            ICollection<Sensor> list = parser.ReadContent<Sensor>();
+            using Parser parser = new("TestInputs\\Day16.txt");
+            ValveMap walker = new ValveMap(parser.ReadContent<Valve>().ToList());
 
-            Assert.AreEqual(26, Sensor.GetAllLineCoverage(list, 10));
+            Assert.AreEqual(1651, walker.Calculate(walker.CurrentValves));
         }
 
         [TestMethod]
-        public void AreaCoverage()
+        public void FindMaxPressureWithElephant()
         {
-            using Parser parser = new("TestInputs\\Day15.txt");
-            ICollection<Sensor> list = parser.ReadContent<Sensor>();
+            using Parser parser = new("TestInputs\\Day16.txt");
+            ValveMap walker = new ValveMap(parser.ReadContent<Valve>().ToList());
 
-                
-            Assert.AreEqual((14, 11), Sensor.GetPointNotCovered(list, 20));
+            Assert.AreEqual(1707, walker.Calculate(walker.CurrentValves, true, 26));
         }
 
         [TestMethod]
-        public void LineCoverageRealData()
+        public void FindMaxPressureRealData()
         {
-            using Parser parser = new("Inputs\\Day15.txt");
-            ICollection<Sensor> list = parser.ReadContent<Sensor>();
+            using Parser parser = new("Inputs\\Day16.txt");
+            ValveMap walker = new ValveMap(parser.ReadContent<Valve>().ToList());
 
-            Assert.AreEqual(4793062, Sensor.GetAllLineCoverage(list, 2000000));
+            Assert.AreEqual(1737, walker.Calculate(walker.CurrentValves));
         }
 
         [TestMethod]
-        public void AreaCoverageRealData()
+        public void FindMaxPressureWithElephantRealData()
         {
-            using Parser parser = new("Inputs\\Day15.txt");
-            ICollection<Sensor> list = parser.ReadContent<Sensor>();
+            using Parser parser = new("Inputs\\Day16.txt");
+            ValveMap walker = new ValveMap(parser.ReadContent<Valve>().ToList());
 
-            (int, int) v = Sensor.GetPointNotCovered(list, 4000000);
-
-            Assert.AreEqual((2706598, 3253551), v);
-            Assert.AreEqual(10826395253551,
-                v.Item1 * (long)4000000 + v.Item2);
+            Assert.AreEqual(2216, walker.Calculate(walker.CurrentValves, true, 26));
         }
     }
 }

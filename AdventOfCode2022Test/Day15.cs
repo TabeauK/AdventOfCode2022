@@ -3,53 +3,47 @@
 namespace AdventOfCode2022Test
 {
     [TestClass]
-    public class Day14
+    public class Day15
     {
         [TestMethod]
-        public void FillFormationWithSand()
+        public void LineCoverage()
         {
-            using Parser parser = new("TestInputs\\Day14.txt");
-            RockFormation formation = RockFormation.Combine(parser.ReadContent<RockFormation>());
+            using Parser parser = new("TestInputs\\Day15.txt");
+            ICollection<Sensor> list = parser.ReadContent<Sensor>();
 
-            formation.FillWithSand();
-
-            Assert.AreEqual(24, formation.SandPlace.Count);
+            Assert.AreEqual(26, Sensor.GetAllLineCoverage(list, 10));
         }
 
         [TestMethod]
-        public void FillFormationWithSandAndFloor()
+        public void AreaCoverage()
         {
-            using Parser parser = new("TestInputs\\Day14.txt");
-            RockFormation formation = RockFormation.Combine(parser.ReadContent<RockFormation>());
+            using Parser parser = new("TestInputs\\Day15.txt");
+            ICollection<Sensor> list = parser.ReadContent<Sensor>();
 
-            formation.AddFloor();
-            formation.FillWithSand();
-
-            Assert.AreEqual(93, formation.SandPlace.Count);
+                
+            Assert.AreEqual((14, 11), Sensor.GetPointNotCovered(list, 20));
         }
 
         [TestMethod]
-        public void FillFormationWithSandRealData()
+        public void LineCoverageRealData()
         {
-            using Parser parser = new("Inputs\\Day14.txt");
-            RockFormation formation = RockFormation.Combine(parser.ReadContent<RockFormation>());
+            using Parser parser = new("Inputs\\Day15.txt");
+            ICollection<Sensor> list = parser.ReadContent<Sensor>();
 
-            formation.FillWithSand();
-
-            Assert.AreEqual(655, formation.SandPlace.Count);
+            Assert.AreEqual(4793062, Sensor.GetAllLineCoverage(list, 2000000));
         }
 
-
         [TestMethod]
-        public void FillFormationWithSandAndFloorRealData()
+        public void AreaCoverageRealData()
         {
-            using Parser parser = new("Inputs\\Day14.txt");
-            RockFormation formation = RockFormation.Combine(parser.ReadContent<RockFormation>());
+            using Parser parser = new("Inputs\\Day15.txt");
+            ICollection<Sensor> list = parser.ReadContent<Sensor>();
 
-            formation.AddFloor();
-            formation.FillWithSand();
+            (int, int) v = Sensor.GetPointNotCovered(list, 4000000);
 
-            Assert.AreEqual(26484, formation.SandPlace.Count);
+            Assert.AreEqual((2706598, 3253551), v);
+            Assert.AreEqual(10826395253551,
+                v.Item1 * (long)4000000 + v.Item2);
         }
     }
 }

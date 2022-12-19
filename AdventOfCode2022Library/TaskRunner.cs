@@ -53,6 +53,18 @@ namespace AdventOfCode2022Library
                 case "Day14":
                     RunDay14(parser);
                     break;
+                case "Day15":
+                    RunDay15(parser);
+                    break;
+                case "Day16":
+                    RunDay16(parser);
+                    break;
+                case "Day17":
+                    RunDay17(parser);
+                    break;
+                case "Day18":
+                    RunDay18(parser);
+                    break;
                 default:
                     break;
             }
@@ -237,6 +249,46 @@ namespace AdventOfCode2022Library
             formation.FillWithSand();
 
             Console.WriteLine("  Sand in formation with the floor: " + formation.SandPlace.Count);
+        }
+
+        public static void RunDay15(Parser parser)
+        {
+            ICollection<Sensor> list = parser.ReadContent<Sensor>();
+
+            (int, int) v = Sensor.GetPointNotCovered(list, 4000000);
+
+            Console.WriteLine("  Positions not containing beacons in row 2000000: " + Sensor.GetAllLineCoverage(list, 2000000));
+            Console.WriteLine("  Tunning frequency of distress beacon: " + v.Item1 * (long)4000000 + v.Item2);
+        }
+
+        public static void RunDay16(Parser parser)
+        {
+            ValveMap walker = new ValveMap(parser.ReadContent<Valve>().ToList());
+
+            Console.WriteLine("  Pressure released in 30 minutes: " + walker.Calculate(walker.CurrentValves));
+            Console.WriteLine("  Pressure released with elephant: " + walker.Calculate(walker.CurrentValves, true, 26));
+        }
+
+        public static void RunDay17(Parser parser)
+        {
+            using Parser parser2 = new("Inputs\\Day17.txt");
+            Chamber chamber = parser.ReadContent<Chamber>().First();
+            Chamber chamber2 = parser2.ReadContent<Chamber>().First();
+
+            chamber2.RunSimulation(1000000000000);
+            chamber.RunSimulation(2022);
+
+
+            Console.WriteLine("  Height of rock tower after 2022 pieces: " + chamber.Height);
+            Console.WriteLine("  Height of rock tower after 10e12 pieces: " + chamber2.Height);
+        }
+
+        public static void RunDay18(Parser parser)
+        {
+            Cube cube = parser.ReadMultilineContent<Cube>().First();
+
+            Console.WriteLine("  Open sides of magma piece: " + cube.Sides);
+            Console.WriteLine("  Open sides without internal droplets: " + (cube.Sides - cube.Droplets()));
         }
     }
 }
