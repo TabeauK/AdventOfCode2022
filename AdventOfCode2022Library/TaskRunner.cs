@@ -65,6 +65,9 @@ namespace AdventOfCode2022Library
                 case "Day18":
                     RunDay18(parser);
                     break;
+                case "Day19":
+                    RunDay19(parser);
+                    break;
                 default:
                     break;
             }
@@ -289,6 +292,17 @@ namespace AdventOfCode2022Library
 
             Console.WriteLine("  Open sides of magma piece: " + cube.Sides);
             Console.WriteLine("  Open sides without internal droplets: " + (cube.Sides - cube.Droplets()));
+        }
+
+        public static void RunDay19(Parser parser)
+        {
+            BlueprintSimulator simulator = new()
+            {
+               list = parser.ReadContent<Blueprint>().ToList()
+            };
+
+            Console.WriteLine("  Quality of blueprints: " + simulator.Run());
+            Console.WriteLine("  Largest number of geodes: " + simulator.RunLonger());
         }
     }
 }

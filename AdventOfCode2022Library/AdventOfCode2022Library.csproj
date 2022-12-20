@@ -13,6 +13,7 @@
     <None Remove="Day16\" />
     <None Remove="Day17\" />
     <None Remove="Day18\" />
+    <None Remove="Day19\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Day9\" />
@@ -21,6 +22,7 @@
     <Folder Include="Day16\" />
     <Folder Include="Day17\" />
     <Folder Include="Day18\" />
+    <Folder Include="Day19\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.Collections" Version="4.3.0" />
