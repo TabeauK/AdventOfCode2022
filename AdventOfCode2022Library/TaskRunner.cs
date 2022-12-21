@@ -71,6 +71,9 @@ namespace AdventOfCode2022Library
                 case "Day20":
                     RunDay20(parser);
                     break;
+                case "Day21":
+                    RunDay21(parser);
+                    break;
                 default:
                     break;
             }
@@ -314,6 +317,25 @@ namespace AdventOfCode2022Library
 
             Console.WriteLine("  Grove coordinates: " + sequence.Run());
             Console.WriteLine("  True grove coordinates: " + sequence.RunLonger());
+        }
+
+        public static void RunDay21(Parser parser)
+        {
+            parser.ReadContent<MonkeyOperation>();
+
+            Console.WriteLine("  Result of monkey riddle: " + MonkeyOperation.Monkeys["root"].Value);
+
+            MonkeyOperation.Monkeys.Clear();
+
+            using Parser parser2 = new("Inputs\\Day21.txt");
+            MonkeyOperation.Part2 = true;
+            parser2.ReadContent<MonkeyOperation>();
+
+            Console.WriteLine("  Human input in monkey riddle: " + MonkeyOperation.Monkeys["root"].GetValue());
+
+            MonkeyOperation.Part2 = false;
+            MonkeyOperation.Monkeys.Clear();
+            
         }
     }
 }
