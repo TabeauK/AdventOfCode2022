@@ -68,6 +68,9 @@ namespace AdventOfCode2022Library
                 case "Day19":
                     RunDay19(parser);
                     break;
+                case "Day20":
+                    RunDay20(parser);
+                    break;
                 default:
                     break;
             }
@@ -303,6 +306,14 @@ namespace AdventOfCode2022Library
 
             Console.WriteLine("  Quality of blueprints: " + simulator.Run());
             Console.WriteLine("  Largest number of geodes: " + simulator.RunLonger());
+        }
+
+        public static void RunDay20(Parser parser)
+        {
+            Sequence sequence = parser.ReadMultilineContent<Sequence>().First();
+
+            Console.WriteLine("  Grove coordinates: " + sequence.Run());
+            Console.WriteLine("  True grove coordinates: " + sequence.RunLonger());
         }
     }
 }

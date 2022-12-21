@@ -19,3 +19,4 @@ TaskRunner.RunDay("Day16");
 TaskRunner.RunDay("Day17");
 TaskRunner.RunDay("Day18");
 TaskRunner.RunDay("Day19");
+TaskRunner.RunDay("Day20");
