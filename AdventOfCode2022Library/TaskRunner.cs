@@ -74,6 +74,9 @@ namespace AdventOfCode2022Library
                 case "Day21":
                     RunDay21(parser);
                     break;
+                case "Day22":
+                    RunDay22(parser);
+                    break;
                 default:
                     break;
             }
@@ -335,7 +338,20 @@ namespace AdventOfCode2022Library
 
             MonkeyOperation.Part2 = false;
             MonkeyOperation.Monkeys.Clear();
-            
+        }
+
+        public static void RunDay22(Parser parser)
+        {
+            using Parser parser2 = new("Inputs\\Day22_2.txt");
+            using Parser parser3 = new("Inputs\\Day22.txt");
+            ForceFieldPath path = parser2.ReadContent<ForceFieldPath>().First();
+
+            path.map = parser.ReadMultilineContent<ForceFieldPlainMap>().First();
+            Console.WriteLine("  Force field password on plain map: " + path.Walk());
+
+            ForceFieldCubeMap.SetUseCase(test: false);
+            path.map = parser3.ReadMultilineContent<ForceFieldCubeMap>().First();
+            Console.WriteLine("  Force field password on cubic map: " + path.Walk());
         }
     }
 }
