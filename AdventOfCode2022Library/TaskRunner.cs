@@ -77,6 +77,9 @@ namespace AdventOfCode2022Library
                 case "Day22":
                     RunDay22(parser);
                     break;
+                case "Day23":
+                    RunDay23(parser);
+                    break;
                 default:
                     break;
             }
@@ -352,6 +355,20 @@ namespace AdventOfCode2022Library
             ForceFieldCubeMap.SetUseCase(test: false);
             path.map = parser3.ReadMultilineContent<ForceFieldCubeMap>().First();
             Console.WriteLine("  Force field password on cubic map: " + path.Walk());
+        }
+
+        public static void RunDay23(Parser parser)
+        {
+            FieldOfElves field = parser.ReadMultilineContent<FieldOfElves>().First();
+
+            field.Run();
+
+            Console.WriteLine("  Get number of empty places in rectangular: " + field.GetArea);
+
+            using Parser parser2 = new("Inputs\\Day23.txt");
+            FieldOfElves field2 = parser2.ReadMultilineContent<FieldOfElves>().First();
+
+            Console.WriteLine("  Get number of rounds elves need: " + field2.Run(int.MaxValue));
         }
     }
 }

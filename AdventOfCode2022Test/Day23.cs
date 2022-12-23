@@ -3,52 +3,46 @@ using AdventOfCode2022Library;
 namespace AdventOfCode2022Test
 {
     [TestClass]
-    public class Day22
+    public class Day23
     {
         [TestMethod]
-        public void ForceFieldFinalPassword()
+        public void FieldOfElvesArea()
         {
-            using Parser parser = new("TestInputs\\Day22_2.txt");
-            using Parser parser2 = new("TestInputs\\Day22.txt");
-            ForceFieldPath path = parser.ReadContent<ForceFieldPath>().First();
-            path.map = parser2.ReadMultilineContent<ForceFieldPlainMap>().First();
+            using Parser parser = new("TestInputs\\Day23.txt");
+            FieldOfElves field = parser.ReadMultilineContent<FieldOfElves>().First();
 
-            Assert.AreEqual(6032, path.Walk());
+            field.Run(10);
+
+            Assert.AreEqual(110, field.GetArea);
         }
 
         [TestMethod]
-        public void ForceFieldCubeFinalPassword()
+        public void RoundsOfElvesMovement()
         {
-            using Parser parser = new("TestInputs\\Day22_2.txt");
-            using Parser parser2 = new("TestInputs\\Day22.txt");
-            ForceFieldPath path = parser.ReadContent<ForceFieldPath>().First();
-            ForceFieldCubeMap.SetUseCase(test: true);
-            path.map = parser2.ReadMultilineContent<ForceFieldCubeMap>().First();
+            using Parser parser = new("TestInputs\\Day23.txt");
+            FieldOfElves field = parser.ReadMultilineContent<FieldOfElves>().First();
 
-            Assert.AreEqual(5031, path.Walk());
+            Assert.AreEqual(20, field.Run(int.MaxValue));
         }
 
         [TestMethod]
-        public void ForceFieldFinalPasswordRealData()
+        public void FieldOfElvesAreaRealData()
         {
-            using Parser parser = new("Inputs\\Day22_2.txt");
-            using Parser parser2 = new("Inputs\\Day22.txt");
-            ForceFieldPath path = parser.ReadContent<ForceFieldPath>().First();
-            path.map = parser2.ReadMultilineContent<ForceFieldPlainMap>().First();
+            using Parser parser = new("Inputs\\Day23.txt");
+            FieldOfElves field = parser.ReadMultilineContent<FieldOfElves>().First();
 
-            Assert.AreEqual(136054, path.Walk());
+            field.Run(10);
+
+            Assert.AreEqual(3689, field.GetArea);
         }
 
         [TestMethod]
-        public void ForceFieldCubeFinalPasswordRealData()
+        public void RoundsOfElvesMovementRealData()
         {
-            using Parser parser = new("Inputs\\Day22_2.txt");
-            using Parser parser2 = new("Inputs\\Day22.txt");
-            ForceFieldPath path = parser.ReadContent<ForceFieldPath>().First();
-            ForceFieldCubeMap.SetUseCase(test: false);
-            path.map = parser2.ReadMultilineContent<ForceFieldCubeMap>().First();
+            using Parser parser = new("Inputs\\Day23.txt");
+            FieldOfElves field = parser.ReadMultilineContent<FieldOfElves>().First();
 
-            Assert.AreEqual(122153, path.Walk());
+            Assert.AreEqual(965, field.Run(int.MaxValue));
         }
     }
 }
