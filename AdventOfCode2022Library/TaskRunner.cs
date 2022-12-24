@@ -80,6 +80,12 @@ namespace AdventOfCode2022Library
                 case "Day23":
                     RunDay23(parser);
                     break;
+                case "Day24":
+                    RunDay24(parser);
+                    break;
+                case "Day25":
+                    RunDay25(parser);
+                    break;
                 default:
                     break;
             }
@@ -369,6 +375,20 @@ namespace AdventOfCode2022Library
             FieldOfElves field2 = parser2.ReadMultilineContent<FieldOfElves>().First();
 
             Console.WriteLine("  Get number of rounds elves need: " + field2.Run(int.MaxValue));
+        }
+
+        public static void RunDay24(Parser parser)
+        {
+            Valley valley = parser.ReadMultilineContent<Valley>().First();
+
+            Console.WriteLine("  Shortest time to get across the valley: " + valley.Run());
+            Console.WriteLine("  Shortest time to get across then come back and go across again: " + valley.Run(valley.Run(valley.Run(), true)));
+        }
+
+        public static void RunDay25(Parser parser)
+        {
+            Console.WriteLine("  Temp: ");
+            Console.WriteLine("  Temp: ");
         }
     }
 }
