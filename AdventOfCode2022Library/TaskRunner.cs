@@ -387,8 +387,9 @@ namespace AdventOfCode2022Library
 
         public static void RunDay25(Parser parser)
         {
-            Console.WriteLine("  Temp: ");
-            Console.WriteLine("  Temp: ");
+            ICollection<SNAFU> list = parser.ReadContent<SNAFU>();
+
+            Console.WriteLine("  SNAFU number to input into console: " + new SNAFU() { Int = list.Sum(x => x.Int) }.Snafu);
         }
     }
 }

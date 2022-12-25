@@ -1,5 +1,9 @@
-﻿using AdventOfCode2022Library;
+﻿using System.Diagnostics;
+using AdventOfCode2022Library;
 
+Stopwatch sw = new();
+sw.Start();
+Console.WriteLine("START :)");
 TaskRunner.RunDay("Day1");
 TaskRunner.RunDay("Day2");
 TaskRunner.RunDay("Day3");
@@ -25,3 +29,5 @@ TaskRunner.RunDay("Day22");
 TaskRunner.RunDay("Day23");
 TaskRunner.RunDay("Day24");
 TaskRunner.RunDay("Day25");
+sw.Stop();
+Console.WriteLine("THE END :)  (time: " + sw.Elapsed + ")");
